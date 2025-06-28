@@ -107,3 +107,7 @@ MibandHeart/
 ## 许可证
 
 MIT License
+
+## 感谢
+
+https://github.com/Tnze/miband-heart-rate

@@ -37,13 +37,13 @@ class HeartRateMonitor:
         flag = data[0]
         heart_rate_value = data[1]
         
-        # 心率值格式判断 (参考Rust代码的flag & 0b00001)
+        # 心率值格式判断
         if flag & 0b00001 != 0:
             # 16位心率值
             if len(data) >= 3:
                 heart_rate_value |= (data[2] << 8)
         
-        # 传感器接触状态 (参考Rust代码的flag & 0b00100)
+        # 传感器接触状态
         sensor_contact = None
         if flag & 0b00100 != 0:
             sensor_contact = bool(flag & 0b00010)
@@ -79,7 +79,7 @@ async def scan_for_heart_rate_devices() -> List:
     """扫描支持心率服务的设备，去重"""
     print("正在扫描心率设备...")
     
-    devices_dict = {}  # 用字典去重，key为设备地址
+    devices_dict = {} 
     
     def detection_callback(device, advertisement_data: AdvertisementData):
         # 检查是否支持心率服务
